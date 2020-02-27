@@ -83,45 +83,4 @@
         </div>
     </div>
 
-    <div class="col-md-6">
-        <hr>
-        <div class="card">
-            <div class="card-header bg-dark text-light">
-                <i class="fa fa-phone"></i> Pembayaran PDAM
-            </div>
-            <div class="card-body">
-                <?php $booking = $this->db->get_where('booking', ['user_nik' => $_SESSION['nik']])->row_array(); ?>
-                <?php $setting = $this->db->get_where('setting', ['id' => 1])->row_array(); ?>
-                <?php if ($booking['status_pdam'] == 1): ?>
-                    <div class="alert alert-info">
-                        <b>Harap untuk Melunaskan Uang PDAM, dengan Isi data dibawah ini.</b>
-                    </div>
-                    <form method="post" action="<?php echo base_url('home/update_pdam2/'.$booking['id']) ?>" enctype="multipart/form-data">
-                        <div class="form-group">
-                            <label>Satuan Liter : </label>
-                            <input type="text" disabled="" class="form-control" value="<?php echo $booking['satuan_pdam'] ?>">
-                        </div>
-                        <div class="form-group">
-                            <label>Harga Liter : </label>
-                            <input type="text" disabled="" class="form-control" value="<?php echo $setting['satuan_pdam'] ?>">
-                        </div>
-                        <div class="form-group">
-                            <label>Total Harga : </label>
-                            <input type="text" disabled="" class="form-control" value="<?php echo $booking['harga_pdam'] ?>">
-                        </div>
-                        <div class="form-group">
-                            <label>Upload Bukti Transfer</label>
-                            <input type="file" name="foto" class="form-control">
-                        </div>
-                        <div class="form-group">
-                            <button type="submit" class="btn btn-block btn-danger btn-sm">Kirim</button>
-                        </div>
-                    </form>
-                <?php elseif ($booking['status_pdam'] == 2): ?>
-                    <b>Menunggu Persetujuan Admin</b>
-                <?php endif; ?>
-            </div>
-        </div>
-    </div>
-
 </div>
