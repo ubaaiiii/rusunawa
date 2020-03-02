@@ -159,7 +159,7 @@ class Booking extends CI_Controller {
 	{
 		if (empty($_SESSION['admin'])) {
 
-			$data['data'] = $this->Model->getKamarBookingUserId($_SESSION['id']);
+			$data['data'] = $this->Model->getKamarBookingUserId($_SESSION['nik']);
 			$data['title'] = "History Booking";
 
 			$data['count'] = $this->db->get_where('booking', ['user_nik' => $_SESSION['nik']])->row_array();
